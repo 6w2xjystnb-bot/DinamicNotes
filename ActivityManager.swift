@@ -1,7 +1,8 @@
 import Foundation
 import ActivityKit
+import Combine
 
-class ActivityManager {
+class ActivityManager: ObservableObject {
     static let shared = ActivityManager()
     
     @Published var currentActivity: Activity<EventAttributes>?
@@ -22,7 +23,7 @@ class ActivityManager {
         )
         
         do {
-            let activity = try Activity.request(
+            let activity = try Activity<EventAttributes>.request(
                 attributes: attributes,
                 content: .init(state: state, staleDate: nil)
             )
