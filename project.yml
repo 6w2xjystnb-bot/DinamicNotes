@@ -5,7 +5,7 @@ targets:
   DinamicNotes:
     type: application
     platform: iOS
-    deploymentTarget: "16.1"
+    deploymentTarget: "16.2"
     sources:
       - path: ContentView.swift
       - path: DinamicNotesApp.swift
@@ -18,7 +18,7 @@ targets:
   DynamicIslandWidgetExtension:
     type: app-extension
     platform: iOS
-    deploymentTarget: "16.1"
+    deploymentTarget: "16.2"
     sources:
       - path: DynamicIslandWidget.swift
       - path: EventAttributes.swift
