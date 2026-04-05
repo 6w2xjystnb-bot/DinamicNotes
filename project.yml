@@ -1,0 +1,29 @@
+name: DinamicNotes
+options:
+  bundleIdPrefix: com.lendic
+targets:
+  DinamicNotes:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.1"
+    sources:
+      - path: ContentView.swift
+      - path: DinamicNotesApp.swift
+      - path: EventAttributes.swift
+      - path: ActivityManager.swift
+    settings:
+      INFOPLIST_KEY_NSSupportsLiveActivities: YES
+      PRODUCT_BUNDLE_IDENTIFIER: com.lendic.DinamicNotes
+
+  DynamicIslandWidgetExtension:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "16.1"
+    sources:
+      - path: DynamicIslandWidget.swift
+      - path: EventAttributes.swift
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.lendic.DinamicNotes.Widget
+      GENERATE_INFOPLIST_FILE: YES
+      INFOPLIST_KEY_NSExtensions:
+        NSExtensionPointIdentifier: com.apple.widgetkit-extension
