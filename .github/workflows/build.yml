@@ -21,10 +21,25 @@ jobs:
       - name: Generate Xcode Project
         run: xcodegen generate
 
-      - name: Build App
+      - name: Build Unsigned Archive
         run: |
-          xcodebuild build \
+          xcodebuild archive \
             -project DinamicNotes.xcodeproj \
             -scheme DinamicNotes \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
-            CODE_SIGNING_ALLOWED=NO
+            -archivePath DinamicNotes.xcarchive \
+            -destination 'generic/platform=iOS' \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: Create IPA
+        run: |
+          mkdir -p Payload
+          cp -r DinamicNotes.xcarchive/Products/Applications/*.app Payload/
+          zip -r DinamicNotes.ipa Payload
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sideload-ipa
+          path: DinamicNotes.ipa
