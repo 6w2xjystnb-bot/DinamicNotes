@@ -12,6 +12,7 @@ targets:
       - path: EventAttributes.swift
       - path: ActivityManager.swift
     settings:
+      GENERATE_INFOPLIST_FILE: YES
       INFOPLIST_KEY_NSSupportsLiveActivities: YES
       PRODUCT_BUNDLE_IDENTIFIER: com.lendic.DinamicNotes
 
